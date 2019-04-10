@@ -17,10 +17,14 @@ public class PlayerControls : MonoBehaviour {
 
     public bool moveForward;
 
+    public AudioClip jumpSound;
+     AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         moveForward = true;
+        audioSource = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update() {
@@ -40,6 +44,7 @@ public class PlayerControls : MonoBehaviour {
 
         if(Input.GetMouseButtonDown(0) && (onGroundFront || onGroundBack)) {
             rb.velocity = new Vector2(0, 8);
+            audioSource.Play();
         }
     }
 
